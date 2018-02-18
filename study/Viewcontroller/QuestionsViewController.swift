@@ -13,8 +13,11 @@ private let reuseID = "QuestionCell"
 
 class QuestionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,NSFetchedResultsControllerDelegate {
 
+    var isReviewMode:Bool = false
+    var currentCategory:String  = ALL_CATEGORY
+    
     @IBOutlet weak var tableView: UITableView!
-    var questionArray = [QuestionModel]()
+    private var questionArray = [QuestionModel]()
     
     
     var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
@@ -33,6 +36,12 @@ class QuestionsViewController: UIViewController, UITableViewDelegate, UITableVie
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Question")
         let idSort = NSSortDescriptor(key: "id", ascending: true)
         request.sortDescriptors = [idSort]
+        
+        let p1 = currentCategory != ALL_CATEGORY ? NSPredicate(format: "category == %@", currentCategory) : NSPredicate(format: "category LIKE '*'")
+        let p2 = isReviewMode ? NSPredicate(format: "myAnswer != 0") : NSPredicate(format: "myAnswer LIKE '*'")
+        
+        request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [p1, p2])
+        
         let delegate = UIApplication.shared.delegate as! AppDelegate
         let moc = delegate.persistentContainer.viewContext
         
@@ -49,6 +58,7 @@ class QuestionsViewController: UIViewController, UITableViewDelegate, UITableVie
     // MARK: - TableView - Data Source
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        
         return fetchedResultsController.sections!.count
     }
     
@@ -57,6 +67,7 @@ class QuestionsViewController: UIViewController, UITableViewDelegate, UITableVie
             fatalError("No sections in fetchedResultsController")
         }
         let sectionInfo = sections[section]
+        print(sectionInfo.numberOfObjects)
         return sectionInfo.numberOfObjects
     }
     
@@ -76,9 +87,9 @@ class QuestionsViewController: UIViewController, UITableViewDelegate, UITableVie
     
     // MARK - TableView - Delegate
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80.0
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 80.0
+//    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)

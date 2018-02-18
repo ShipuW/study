@@ -10,6 +10,8 @@ import Foundation
 import CoreData
 import UIKit
 
+let ALL_CATEGORY = "All"
+
 class ActivitiesManager:NSObject {
     
     private let QuestionModelName = "Question"
@@ -29,7 +31,7 @@ class ActivitiesManager:NSObject {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: QuestionModelName)
         request.returnsObjectsAsFaults = false
         for model in array {
-            request.predicate = NSPredicate(format: "id = %d", model.id)
+            request.predicate = NSPredicate(format: "id == %d", model.id)
             do {
                 if let result = try context?.fetch(request) {
                     if result.count > 0 {
@@ -79,8 +81,58 @@ class ActivitiesManager:NSObject {
         newCDModel.myAnswer = newModel.myAnswer ?? 0
     }
     
-    func fetchCategories() -> [String] {
-        return [""]
+    func fetchCategories() -> Set<String> {
+        var set = Set<String>()
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: QuestionModelName)
+        request.returnsObjectsAsFaults = false
+        do {
+            if let result = try context?.fetch(request) {
+                for row in result as! [Question] {
+                    set.insert(row.category ?? "")
+                }
+            }
+        } catch {
+            print("Failed in Core Data")
+        }
+        return set
+    }
+    
+    func fetchNumOfTakenQuestions(category:String?) -> Int{
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: QuestionModelName)
+        request.returnsObjectsAsFaults = false
+        if category != ALL_CATEGORY {
+            request.predicate = NSPredicate(format: "(category == %@) AND (myAnswer != 0)", category!)
+        } else {
+            request.predicate = NSPredicate(format: "myAnswer != 0")
+        }
+        
+        do {
+            if let result = try context?.fetch(request) {
+                return result.count
+            }
+        } catch {
+            print("Failed in Core Data")
+        }
+        
+        return 0;
+    }
+    
+    func fetchNumOfAvailableQuestions(category:String?) -> Int{
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: QuestionModelName)
+        request.returnsObjectsAsFaults = false
+        if category != ALL_CATEGORY {
+            request.predicate = NSPredicate(format: "category == %@", category!)
+        }
+        
+        do {
+            if let result = try context?.fetch(request) {
+                return result.count
+            }
+        } catch {
+            print("Failed in Core Data")
+        }
+        
+        return 0;
     }
     
 }
