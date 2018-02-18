@@ -10,7 +10,7 @@ import UIKit
 
 class BaseModel {
     
-    var time : Int64?
+    var id : Int16
     
     enum Keys : Int {
         case KeyId
@@ -23,7 +23,7 @@ class BaseModel {
     }
     
     required init(_ dictionary: Dictionary<String, AnyObject>){
-        time = dictionary[Keys.KeyId.toKey()] as? Int64
+        id = Int16((dictionary[Keys.KeyId.toKey()] as? String)!)!
     }
     
     class func ArrayFromDict(dict:Dictionary<String, Any>, keyWord:String) -> (Array<Any>) {

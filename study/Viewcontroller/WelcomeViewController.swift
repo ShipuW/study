@@ -12,8 +12,23 @@ class WelcomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        self.LoadUI()
+        self.LoadQuestions()
+        
     }
 
+    func LoadUI () {
+        self.title = "Welcome"
+    }
+    
+    func LoadQuestions () {
+        if let path = Bundle.main.path(forResource: "questions", ofType: "plist") {
+            let arrayRoot = NSArray(contentsOfFile: path)
+            if let array = arrayRoot {
+                let questions:[QuestionModel] = QuestionModel.ArrayFromArray(array: array as! Array<Any>) as! [QuestionModel]
+                ActivitiesManager.shared.updateQuestions(array: questions)
+            }
+        }
+    }
 }

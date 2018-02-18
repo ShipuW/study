@@ -3,7 +3,7 @@
     <entity name="Question" representedClassName=".Question" syncable="YES">
         <attribute name="answer" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="myAnswer" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="option" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="question" optional="YES" attributeType="String" syncable="YES"/>
