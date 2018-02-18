@@ -13,17 +13,17 @@ class BaseModel {
     var time : Int64?
     
     enum Keys : Int {
-        case KeyTime
+        case KeyId
         func toKey() -> String! {
             switch self {
-            case .KeyTime:
-                return "time"
+            case .KeyId:
+                return "id"
             }
         }
     }
     
     required init(_ dictionary: Dictionary<String, AnyObject>){
-        time = dictionary[Keys.KeyTime.toKey()] as? Int64
+        time = dictionary[Keys.KeyId.toKey()] as? Int64
     }
     
     class func ArrayFromDict(dict:Dictionary<String, Any>, keyWord:String) -> (Array<Any>) {

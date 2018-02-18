@@ -13,6 +13,12 @@
 		145DF1F72038A726009C3057 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 145DF1F52038A726009C3057 /* LaunchScreen.storyboard */; };
 		145DF2062038AF5C009C3057 /* AlertDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145DF2052038AF5C009C3057 /* AlertDisplay.swift */; };
 		145DF2092038AFA5009C3057 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145DF2082038AFA5009C3057 /* BaseModel.swift */; };
+		145DF20C2038F24D009C3057 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 145DF20A2038F24D009C3057 /* CoreDataModel.xcdatamodeld */; };
+		147214B8203931D10097ECA0 /* Question+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147214B6203931D10097ECA0 /* Question+CoreDataClass.swift */; };
+		147214B9203931D10097ECA0 /* Question+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147214B7203931D10097ECA0 /* Question+CoreDataProperties.swift */; };
+		147214BB203934440097ECA0 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147214BA203934440097ECA0 /* WelcomeViewController.swift */; };
+		147214BD203934560097ECA0 /* QuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147214BC203934560097ECA0 /* QuestionsViewController.swift */; };
+		147214BF203934DB0097ECA0 /* ActivitiesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147214BE203934DB0097ECA0 /* ActivitiesManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +30,13 @@
 		145DF1F82038A726009C3057 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		145DF2052038AF5C009C3057 /* AlertDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDisplay.swift; sourceTree = "<group>"; };
 		145DF2082038AFA5009C3057 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
+		145DF20B2038F24D009C3057 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
+		145DF2152038F6F5009C3057 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		147214B6203931D10097ECA0 /* Question+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Question+CoreDataClass.swift"; sourceTree = "<group>"; };
+		147214B7203931D10097ECA0 /* Question+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Question+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		147214BA203934440097ECA0 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		147214BC203934560097ECA0 /* QuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsViewController.swift; sourceTree = "<group>"; };
+		147214BE203934DB0097ECA0 /* ActivitiesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +55,7 @@
 			children = (
 				145DF1EB2038A726009C3057 /* study */,
 				145DF1EA2038A726009C3057 /* Products */,
+				145DF2142038F6F5009C3057 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,70 +71,93 @@
 			isa = PBXGroup;
 			children = (
 				145DF1EC2038A726009C3057 /* AppDelegate.swift */,
-				145DF2042038AEC1009C3057 /* viewcontroller */,
-				145DF2032038AEB9009C3057 /* view */,
-				145DF2022038AEB0009C3057 /* tools */,
-				145DF2012038AEA3009C3057 /* thirdsdk */,
-				145DF2002038AE9D009C3057 /* services */,
-				145DF1FF2038AE8E009C3057 /* resources */,
-				145DF1FE2038AE84009C3057 /* model */,
+				145DF2112038F3E3009C3057 /* CoreDataModel */,
+				145DF2042038AEC1009C3057 /* Viewcontroller */,
+				145DF2032038AEB9009C3057 /* View */,
+				145DF2022038AEB0009C3057 /* Tools */,
+				145DF2012038AEA3009C3057 /* ThirdSDK */,
+				145DF2002038AE9D009C3057 /* Services */,
+				145DF1FF2038AE8E009C3057 /* Resouces */,
+				145DF1FE2038AE84009C3057 /* Model */,
 			);
 			path = study;
 			sourceTree = "<group>";
 		};
-		145DF1FE2038AE84009C3057 /* model */ = {
+		145DF1FE2038AE84009C3057 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				145DF2082038AFA5009C3057 /* BaseModel.swift */,
 			);
-			path = model;
+			path = Model;
 			sourceTree = "<group>";
 		};
-		145DF1FF2038AE8E009C3057 /* resources */ = {
+		145DF1FF2038AE8E009C3057 /* Resouces */ = {
 			isa = PBXGroup;
 			children = (
 				145DF1F02038A726009C3057 /* Main.storyboard */,
 				145DF1F32038A726009C3057 /* Assets.xcassets */,
 				145DF1F52038A726009C3057 /* LaunchScreen.storyboard */,
 				145DF1F82038A726009C3057 /* Info.plist */,
+				145DF20A2038F24D009C3057 /* CoreDataModel.xcdatamodeld */,
 			);
-			path = resources;
+			name = Resouces;
+			path = Resources;
 			sourceTree = "<group>";
 		};
-		145DF2002038AE9D009C3057 /* services */ = {
+		145DF2002038AE9D009C3057 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				147214BE203934DB0097ECA0 /* ActivitiesManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		145DF2012038AEA3009C3057 /* ThirdSDK */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = services;
+			path = ThirdSDK;
 			sourceTree = "<group>";
 		};
-		145DF2012038AEA3009C3057 /* thirdsdk */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = thirdsdk;
-			sourceTree = "<group>";
-		};
-		145DF2022038AEB0009C3057 /* tools */ = {
+		145DF2022038AEB0009C3057 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
 				145DF2052038AF5C009C3057 /* AlertDisplay.swift */,
 			);
-			path = tools;
+			path = Tools;
 			sourceTree = "<group>";
 		};
-		145DF2032038AEB9009C3057 /* view */ = {
+		145DF2032038AEB9009C3057 /* View */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = view;
+			path = View;
 			sourceTree = "<group>";
 		};
-		145DF2042038AEC1009C3057 /* viewcontroller */ = {
+		145DF2042038AEC1009C3057 /* Viewcontroller */ = {
 			isa = PBXGroup;
 			children = (
+				147214BA203934440097ECA0 /* WelcomeViewController.swift */,
+				147214BC203934560097ECA0 /* QuestionsViewController.swift */,
 			);
-			path = viewcontroller;
+			path = Viewcontroller;
+			sourceTree = "<group>";
+		};
+		145DF2112038F3E3009C3057 /* CoreDataModel */ = {
+			isa = PBXGroup;
+			children = (
+				147214B6203931D10097ECA0 /* Question+CoreDataClass.swift */,
+				147214B7203931D10097ECA0 /* Question+CoreDataProperties.swift */,
+			);
+			path = CoreDataModel;
+			sourceTree = "<group>";
+		};
+		145DF2142038F6F5009C3057 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				145DF2152038F6F5009C3057 /* CoreData.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,8 +233,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				145DF2092038AFA5009C3057 /* BaseModel.swift in Sources */,
+				147214B9203931D10097ECA0 /* Question+CoreDataProperties.swift in Sources */,
+				147214BD203934560097ECA0 /* QuestionsViewController.swift in Sources */,
+				147214BF203934DB0097ECA0 /* ActivitiesManager.swift in Sources */,
 				145DF1ED2038A726009C3057 /* AppDelegate.swift in Sources */,
+				145DF20C2038F24D009C3057 /* CoreDataModel.xcdatamodeld in Sources */,
 				145DF2062038AF5C009C3057 /* AlertDisplay.swift in Sources */,
+				147214B8203931D10097ECA0 /* Question+CoreDataClass.swift in Sources */,
+				147214BB203934440097ECA0 /* WelcomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,7 +379,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M6NGNVCC95;
-				INFOPLIST_FILE = study/Info.plist;
+				INFOPLIST_FILE = study/resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.testmax.study;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -351,7 +394,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M6NGNVCC95;
-				INFOPLIST_FILE = study/Info.plist;
+				INFOPLIST_FILE = study/resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.testmax.study;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -382,6 +425,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		145DF20A2038F24D009C3057 /* CoreDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				145DF20B2038F24D009C3057 /* CoreDataModel.xcdatamodel */,
+			);
+			currentVersion = 145DF20B2038F24D009C3057 /* CoreDataModel.xcdatamodel */;
+			path = CoreDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 145DF1E12038A726009C3057 /* Project object */;
 }
