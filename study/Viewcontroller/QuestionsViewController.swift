@@ -18,11 +18,10 @@ class QuestionsViewController: UIViewController, UITableViewDelegate, UITableVie
     var isReviewMode:Bool = false
     var currentCategory:String  = ALL_CATEGORY
     
+    // Record of the answer in this time
     private var myAnswersDict:Dictionary<Int16, Int16> = Dictionary()
     
     @IBOutlet weak var tableView: UITableView!
-    
-    
     
     
     override func viewDidLoad() {
@@ -44,7 +43,7 @@ class QuestionsViewController: UIViewController, UITableViewDelegate, UITableVie
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
         
-        // 旋转
+        // Rotate
         view.transform = CGAffineTransform(rotationAngle: -.pi/2)
         
         self.updateTitle()
@@ -105,10 +104,10 @@ class QuestionsViewController: UIViewController, UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseID, for: indexPath) as! QuestionCell
         cell.delegate = self
         cell.contentView.transform = CGAffineTransform(rotationAngle: .pi/2)
+        
 //        guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseID, for: indexPath) else {
 //            fatalError("Wrong cell type dequeued")
 //        }
-        
         
         guard (self.fetchedResultsController?.object(at: indexPath)) != nil else {
             fatalError("Attempt to configure cell without a managed object")
@@ -117,6 +116,7 @@ class QuestionsViewController: UIViewController, UITableViewDelegate, UITableVie
         if isReviewMode {
             cell.configureForQuestionView(self.fetchedResultsController?.object(at: indexPath) as! Question)
         } else {
+            // Provide an answer record to reuse cells
             cell.configureForQuestionStart(self.fetchedResultsController?.object(at: indexPath) as! Question,myAnswersDict )
         }
         

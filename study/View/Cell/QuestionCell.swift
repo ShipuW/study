@@ -57,7 +57,6 @@ class QuestionCell: UITableViewCell {
         self.myCurrentAnswer = myAnswerDict[(questionModel?.id)!]
         self.showColor()
 
-        
         questionTextView.attributedText = StringConverter.convertStringToHTMLAttributedString(string: (self.questionModel?.question)!)
         
         let optionCount = self.questionModel?.option.count
@@ -74,28 +73,32 @@ class QuestionCell: UITableViewCell {
     {
         self.cleanColor()
         
+        // Update answer when tapped textview
+        
         myCurrentAnswer = Int16(sender.view?.tag ?? 0)
         
         if let realDelegate = self.delegate{
-            realDelegate.selectedAnswer!(id: (self.questionModel?.id)!, myAnswer: Int16(sender.view?.tag ?? 0))
+            realDelegate.selectedAnswer!(id: (self.questionModel?.id)!, myAnswer: myCurrentAnswer!)
         }
         
         self.showColor()
 
     }
     
+    // Only show color when answered this time
+    
     func showColor() {
+        
         if let showingAnswer = myCurrentAnswer {
             if showingAnswer > 0 {
                 collectionOfTextViews![Int(showingAnswer - 1)].backgroundColor = UIColor.red
             }
-            
             let ansIndex = Int((self.questionModel?.answer)! - 1)
             collectionOfTextViews![ansIndex].backgroundColor = UIColor.green
         }
-
-        
     }
+    
+    // Clean all color on textview
     
     func cleanColor() {
         let optionCount = self.questionModel?.option.count
