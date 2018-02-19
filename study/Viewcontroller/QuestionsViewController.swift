@@ -28,9 +28,23 @@ class QuestionsViewController: UIViewController, UITableViewDelegate, UITableVie
         tableView.register(UINib(nibName: reuseID, bundle: Bundle.main), forCellReuseIdentifier: reuseID)
         self.initializeFetchedResultsController()
 //        self.tableView.reloadData()
+        self.LoadUI()
     }
     
+    func LoadUI() {
+        tableView.isPagingEnabled = true
+        tableView.rowHeight = view.bounds.width
+        tableView.separatorStyle = .none
+        tableView.allowsSelection = false
+        
+        // 旋转
+        view.transform = CGAffineTransform(rotationAngle: -.pi/2)
+    }
     
+    func scrollToTop () {
+        let desiredOffset = CGPoint(x: 0, y: -self.tableView.contentInset.top)
+        self.tableView.setContentOffset(desiredOffset, animated: true)
+    }
     
     func initializeFetchedResultsController() {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Question")
@@ -72,32 +86,26 @@ class QuestionsViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseID, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseID, for: indexPath) as! QuestionCell
         
+        cell.contentView.transform = CGAffineTransform(rotationAngle: .pi/2)
 //        guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseID, for: indexPath) else {
 //            fatalError("Wrong cell type dequeued")
 //        }
+        
         
         guard (self.fetchedResultsController?.object(at: indexPath)) != nil else {
             fatalError("Attempt to configure cell without a managed object")
         }
         
+        cell.configureForQuestion(self.fetchedResultsController?.object(at: indexPath) as! Question)
+        
+        
         return cell
-    }
-    
-    // MARK - TableView - Delegate
-    
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 80.0
-//    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     
     // MARK - NSFetchedResultsControllerDelegate
-    
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
@@ -132,6 +140,8 @@ class QuestionsViewController: UIViewController, UITableViewDelegate, UITableVie
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
+    
+    
     
 }
 

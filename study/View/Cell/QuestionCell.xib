@@ -6,21 +6,115 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="374" id="KGk-i7-Jjw" customClass="QuestionCell" customModule="study" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="247" height="374"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="759" id="KGk-i7-Jjw" customClass="QuestionCell" customModule="study" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="456" height="759"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="247" height="373.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="456" height="758.5"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="question" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zca-3Q-XhY">
+                        <rect key="frame" x="30" y="131" width="396" height="297"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TOR-JL-CYr">
+                        <rect key="frame" x="0.0" y="458" width="228" height="100"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="100" id="3te-zH-Uvs"/>
+                            <constraint firstAttribute="width" constant="228" id="kso-Zc-jFn"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7nn-hK-FO8">
+                        <rect key="frame" x="228" y="458" width="228" height="100"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="3" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TPp-dP-RkK">
+                        <rect key="frame" x="0.0" y="558" width="228" height="100"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="100" id="wWq-dB-F7I"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="4" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6D-eG-mAY">
+                        <rect key="frame" x="228" y="558" width="228" height="100"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="5" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xn5-Ga-jpK">
+                        <rect key="frame" x="0.0" y="658" width="228" height="100"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="100" id="YKg-w5-lKb"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="6" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2aC-yx-cII">
+                        <rect key="frame" x="228" y="658" width="228" height="100"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                </subviews>
+                <color key="backgroundColor" red="0.38881138389999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                <constraints>
+                    <constraint firstItem="TOR-JL-CYr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="0F2-Bf-aaJ"/>
+                    <constraint firstItem="TPp-dP-RkK" firstAttribute="centerX" secondItem="TOR-JL-CYr" secondAttribute="centerX" id="2mG-rC-fO8"/>
+                    <constraint firstItem="Xn5-Ga-jpK" firstAttribute="centerX" secondItem="TOR-JL-CYr" secondAttribute="centerX" id="2wE-fQ-abQ"/>
+                    <constraint firstItem="TPp-dP-RkK" firstAttribute="top" secondItem="TOR-JL-CYr" secondAttribute="bottom" id="3Kz-0P-bEN"/>
+                    <constraint firstItem="TPp-dP-RkK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="3rg-pP-eQt"/>
+                    <constraint firstAttribute="trailing" secondItem="b6D-eG-mAY" secondAttribute="trailing" id="4X9-Jl-6BM"/>
+                    <constraint firstItem="2aC-yx-cII" firstAttribute="top" secondItem="b6D-eG-mAY" secondAttribute="bottom" id="4z1-5u-ceB"/>
+                    <constraint firstItem="2aC-yx-cII" firstAttribute="centerY" secondItem="Xn5-Ga-jpK" secondAttribute="centerY" id="8YP-ES-UsH"/>
+                    <constraint firstItem="zca-3Q-XhY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="A9I-N1-9PC"/>
+                    <constraint firstItem="2aC-yx-cII" firstAttribute="centerX" secondItem="7nn-hK-FO8" secondAttribute="centerX" id="AQL-jS-AR9"/>
+                    <constraint firstItem="TOR-JL-CYr" firstAttribute="top" secondItem="zca-3Q-XhY" secondAttribute="bottom" constant="30" id="Ccc-Ia-ihQ"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="zca-3Q-XhY" secondAttribute="trailing" constant="10" id="DIe-ff-W9k"/>
+                    <constraint firstAttribute="trailing" secondItem="2aC-yx-cII" secondAttribute="trailing" id="FQB-fM-TZK"/>
+                    <constraint firstAttribute="bottom" secondItem="2aC-yx-cII" secondAttribute="bottom" id="QzE-3O-Mya"/>
+                    <constraint firstItem="Xn5-Ga-jpK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="SHx-2z-fdp"/>
+                    <constraint firstAttribute="trailing" secondItem="7nn-hK-FO8" secondAttribute="trailing" id="XuT-ww-Tfl"/>
+                    <constraint firstItem="b6D-eG-mAY" firstAttribute="top" secondItem="7nn-hK-FO8" secondAttribute="bottom" id="cH7-g6-92a"/>
+                    <constraint firstItem="zca-3Q-XhY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="100" id="cfF-1H-FhW"/>
+                    <constraint firstItem="2aC-yx-cII" firstAttribute="leading" secondItem="Xn5-Ga-jpK" secondAttribute="trailing" id="dX3-wN-Dip"/>
+                    <constraint firstItem="b6D-eG-mAY" firstAttribute="centerX" secondItem="7nn-hK-FO8" secondAttribute="centerX" id="dfm-Bh-iNe"/>
+                    <constraint firstItem="7nn-hK-FO8" firstAttribute="top" secondItem="zca-3Q-XhY" secondAttribute="bottom" constant="30" id="eb2-Mi-kBL"/>
+                    <constraint firstItem="7nn-hK-FO8" firstAttribute="centerY" secondItem="TOR-JL-CYr" secondAttribute="centerY" id="gF4-hh-HqX"/>
+                    <constraint firstAttribute="bottom" secondItem="Xn5-Ga-jpK" secondAttribute="bottom" id="imh-Y0-dgo"/>
+                    <constraint firstItem="b6D-eG-mAY" firstAttribute="centerY" secondItem="TPp-dP-RkK" secondAttribute="centerY" id="kQd-Kj-0vf"/>
+                    <constraint firstItem="b6D-eG-mAY" firstAttribute="leading" secondItem="TPp-dP-RkK" secondAttribute="trailing" id="niK-RO-Zgr"/>
+                    <constraint firstItem="Xn5-Ga-jpK" firstAttribute="top" secondItem="TPp-dP-RkK" secondAttribute="bottom" id="rAh-rF-b2g"/>
+                    <constraint firstItem="7nn-hK-FO8" firstAttribute="leading" secondItem="TOR-JL-CYr" secondAttribute="trailing" id="zhy-bf-sHu"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <point key="canvasLocation" x="110.5" y="64"/>
+            <connections>
+                <outlet property="questionTextView" destination="zca-3Q-XhY" id="ids-Ed-LM8"/>
+                <outletCollection property="collectionOfTextViews" destination="TOR-JL-CYr" collectionClass="NSMutableArray" id="9cv-YD-S07"/>
+                <outletCollection property="collectionOfTextViews" destination="7nn-hK-FO8" collectionClass="NSMutableArray" id="Hgo-ur-FkT"/>
+                <outletCollection property="collectionOfTextViews" destination="TPp-dP-RkK" collectionClass="NSMutableArray" id="iZa-GW-Kfy"/>
+                <outletCollection property="collectionOfTextViews" destination="b6D-eG-mAY" collectionClass="NSMutableArray" id="731-Vq-gNs"/>
+                <outletCollection property="collectionOfTextViews" destination="Xn5-Ga-jpK" collectionClass="NSMutableArray" id="DYl-GM-n5d"/>
+                <outletCollection property="collectionOfTextViews" destination="2aC-yx-cII" collectionClass="NSMutableArray" id="Q4p-UO-UTE"/>
+            </connections>
+            <point key="canvasLocation" x="215" y="206.5"/>
         </tableViewCell>
     </objects>
 </document>

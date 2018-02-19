@@ -10,15 +10,35 @@ import UIKit
 
 class QuestionCell: UITableViewCell {
 
+    var questionModel:Question?
+    
+    @IBOutlet weak var questionTextView: UITextView!
+    
+    @IBOutlet var collectionOfTextViews: Array<UITextView>?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    func configureForQuestion(_ questionResult: Question){
+        
+        self.questionModel = questionResult
+        
+        questionTextView.attributedText = StringConverter.convertStringToHTMLAttributedString(string: (self.questionModel?.question)!)
 
-        // Configure the view for the selected state
+        let optionCount = self.questionModel?.option.count
+        for index in 0...optionCount! - 1 {
+            collectionOfTextViews![index].attributedText = StringConverter.convertStringToHTMLAttributedString(string: (self.questionModel?.option[index])!)
+        }
+        
+        
     }
+    
+    
+    
+    
     
 }

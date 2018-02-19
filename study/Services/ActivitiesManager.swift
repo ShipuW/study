@@ -97,6 +97,26 @@ class ActivitiesManager:NSObject {
         return set
     }
     
+    func updateMyAnswerForQuestion(id:Int16, myAnswer:Int16) {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: QuestionModelName)
+        request.returnsObjectsAsFaults = false
+        request.predicate = NSPredicate(format: "id == %d", id)
+        do {
+            if let result = try context?.fetch(request) {
+                if result.count > 0 {
+                    for oldQuestion in result as! [Question] {
+                        if oldQuestion.myAnswer != myAnswer {
+                            oldQuestion.myAnswer = myAnswer
+                        }
+                    }
+                }
+            }
+        } catch {
+            print("Failed in Core Data")
+        }
+        self.delegate?.saveContext()
+    }
+    
     func fetchNumOfTakenQuestions(category:String?) -> Int{
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: QuestionModelName)
         request.returnsObjectsAsFaults = false

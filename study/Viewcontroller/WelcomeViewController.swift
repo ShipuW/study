@@ -67,6 +67,7 @@ class WelcomeViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         for category in categories {
             pickerData.append(category)
         }
+        CategoryPicker.reloadAllComponents()
     }
     
     // MARK - UIPickerViewDelegate
@@ -99,5 +100,12 @@ class WelcomeViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         questionsVC.isReviewMode = false
         questionsVC.currentCategory = currentCategory
         self.navigationController?.pushViewController(questionsVC, animated: true)
+    }
+    
+    @IBAction func ReloadQuestionsTapped(_ sender: UIButton) {
+        self.UpdateQuestions()
+        self.ReloadCategory()
+        self.ReloadNumber()
+        //Cannot refresh picker
     }
 }
