@@ -11,23 +11,32 @@ import CoreData
 
 private let reuseID = "QuestionCell"
 
-class QuestionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, NSFetchedResultsControllerDelegate {
+class QuestionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, QuestionCellDelegate, NSFetchedResultsControllerDelegate {
 
+    var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
+    
     var isReviewMode:Bool = false
     var currentCategory:String  = ALL_CATEGORY
     
+    private var myAnswersDict:Dictionary<Int16, Int16> = Dictionary()
+    
     @IBOutlet weak var tableView: UITableView!
     
-    var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: reuseID, bundle: Bundle.main), forCellReuseIdentifier: reuseID)
         self.initializeFetchedResultsController()
-//        self.tableView.reloadData()
         self.LoadUI()
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        ActivitiesManager.shared.updateMyAnswerForQuestion(myAnswerDict: self.myAnswersDict)
+    }
+    
     
     func LoadUI() {
         tableView.isPagingEnabled = true
@@ -51,10 +60,16 @@ class QuestionsViewController: UIViewController, UITableViewDelegate, UITableVie
         let idSort = NSSortDescriptor(key: "id", ascending: true)
         request.sortDescriptors = [idSort]
         
+        // In case of using predicate when updating 
         let p1 = currentCategory != ALL_CATEGORY ? NSPredicate(format: "category == %@", currentCategory) : NSPredicate(format: "category LIKE '*'")
-        let p2 = isReviewMode ? NSPredicate(format: "myAnswer != 0") : NSPredicate(format: "myAnswer LIKE '*'")
+        if isReviewMode {
+            let p2 = NSPredicate(format: "myAnswer != 0")
+            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [p1, p2])
+        } else {
+            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [p1])
+        }
         
-        request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [p1, p2])
+        request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [p1])
         
         let delegate = UIApplication.shared.delegate as! AppDelegate
         let moc = delegate.persistentContainer.viewContext
@@ -74,7 +89,6 @@ class QuestionsViewController: UIViewController, UITableViewDelegate, UITableVie
             fatalError("No sections in fetchedResultsController")
         }
         let sectionInfo = sections[section]
-        print(sectionInfo.numberOfObjects)
         return sectionInfo.numberOfObjects
     }
     
@@ -91,7 +105,7 @@ class QuestionsViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseID, for: indexPath) as! QuestionCell
-        
+        cell.delegate = self
         cell.contentView.transform = CGAffineTransform(rotationAngle: .pi/2)
 //        guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseID, for: indexPath) else {
 //            fatalError("Wrong cell type dequeued")
@@ -102,8 +116,11 @@ class QuestionsViewController: UIViewController, UITableViewDelegate, UITableVie
             fatalError("Attempt to configure cell without a managed object")
         }
         
-        cell.configureForQuestion(self.fetchedResultsController?.object(at: indexPath) as! Question)
-        
+        if isReviewMode {
+            cell.configureForQuestionView(self.fetchedResultsController?.object(at: indexPath) as! Question)
+        } else {
+            cell.configureForQuestionStart(self.fetchedResultsController?.object(at: indexPath) as! Question)
+        }
         
         return cell
     }
@@ -158,6 +175,16 @@ class QuestionsViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     
+    // MARK - QuestionCellDelegate
+    func selectedAnswer(id:Int16, myAnswer:Int16) {
+        if myAnswersDict[id] != nil {
+            myAnswersDict.updateValue(myAnswer, forKey: id)
+        } else {
+            myAnswersDict[id] = myAnswer
+        }
+    }
+    
 }
+
 
 

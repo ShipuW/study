@@ -25,13 +25,16 @@ class WelcomeViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.LoadUI()
-//        self.UpdateQuestions()
         self.ReloadCategory()
         self.ReloadNumber()
-        
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.ReloadNumber()
+    }
+    
 
     func LoadUI () {
         self.title = "Welcome"
