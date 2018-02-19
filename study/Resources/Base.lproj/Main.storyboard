@@ -19,10 +19,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dMu-BZ-XQg">
-                                <rect key="frame" x="138" y="254" width="100" height="30"/>
+                                <rect key="frame" x="152" y="254" width="72" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="79c-dA-Qge"/>
-                                    <constraint firstAttribute="width" constant="100" id="VTC-sy-1Zc"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="22"/>
                                 <state key="normal" title="Review"/>
@@ -37,9 +36,8 @@
                                 </constraints>
                             </pickerView>
                             <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="All" borderStyle="roundedRect" placeholder="Category" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3xy-X2-dnb">
-                                <rect key="frame" x="88" y="104" width="200" height="40"/>
+                                <rect key="frame" x="124" y="104" width="128.5" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="PLu-KX-qTP"/>
                                     <constraint firstAttribute="height" constant="40" id="kad-jp-TBR"/>
                                 </constraints>
                                 <nil key="textColor"/>
@@ -47,20 +45,18 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50/100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9te-g3-SfV">
-                                <rect key="frame" x="138" y="184" width="100" height="30"/>
+                                <rect key="frame" x="152" y="184" width="72" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Dql-3a-eWx"/>
-                                    <constraint firstAttribute="width" constant="100" id="NMC-zG-dzT"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecZ-Ku-sfH">
-                                <rect key="frame" x="138" y="324" width="100" height="30"/>
+                                <rect key="frame" x="164" y="324" width="48" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="OjN-iU-4vF"/>
-                                    <constraint firstAttribute="width" constant="100" id="nHg-7K-hap"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="22"/>
                                 <state key="normal" title="Start"/>
@@ -69,10 +65,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l60-Wq-mxS">
-                                <rect key="frame" x="87.5" y="394" width="200" height="30"/>
+                                <rect key="frame" x="100" y="394" width="175" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="YWh-wa-m2T"/>
-                                    <constraint firstAttribute="width" constant="200" id="gLX-h5-5h2"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="22"/>
                                 <state key="normal" title="Reload Questions"/>
@@ -113,12 +108,12 @@
         <!--Questions View Controller-->
         <scene sceneID="Vhj-Pe-T3a">
             <objects>
-                <viewController storyboardIdentifier="QuestionsViewController" id="RKB-YN-cRe" customClass="QuestionsViewController" customModule="study" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QuestionsViewController" automaticallyAdjustsScrollViewInsets="NO" id="RKB-YN-cRe" customClass="QuestionsViewController" customModule="study" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="u2D-YO-ASr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nba-9C-WAG">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nba-9C-WAG">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>

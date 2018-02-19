@@ -11,14 +11,12 @@ import CoreData
 
 private let reuseID = "QuestionCell"
 
-class QuestionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,NSFetchedResultsControllerDelegate {
+class QuestionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, NSFetchedResultsControllerDelegate {
 
     var isReviewMode:Bool = false
     var currentCategory:String  = ALL_CATEGORY
     
     @IBOutlet weak var tableView: UITableView!
-    private var questionArray = [QuestionModel]()
-    
     
     var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
     
@@ -39,6 +37,8 @@ class QuestionsViewController: UIViewController, UITableViewDelegate, UITableVie
         
         // 旋转
         view.transform = CGAffineTransform(rotationAngle: -.pi/2)
+        
+        self.updateTitle()
     }
     
     func scrollToTop () {
@@ -69,6 +69,15 @@ class QuestionsViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
+    func getNumberOfItemInSection (section:Int) -> Int {
+        guard let sections = fetchedResultsController.sections else {
+            fatalError("No sections in fetchedResultsController")
+        }
+        let sectionInfo = sections[section]
+        print(sectionInfo.numberOfObjects)
+        return sectionInfo.numberOfObjects
+    }
+    
     // MARK: - TableView - Data Source
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -77,12 +86,7 @@ class QuestionsViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let sections = fetchedResultsController.sections else {
-            fatalError("No sections in fetchedResultsController")
-        }
-        let sectionInfo = sections[section]
-        print(sectionInfo.numberOfObjects)
-        return sectionInfo.numberOfObjects
+        return self.getNumberOfItemInSection(section: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -141,6 +145,17 @@ class QuestionsViewController: UIViewController, UITableViewDelegate, UITableVie
         tableView.endUpdates()
     }
     
+    // MARK - UIScrollViewDelegate
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        self.updateTitle()
+    }
+    
+    func updateTitle(){
+        if let index = self.tableView.indexPathsForVisibleRows?.first {
+            self.title = String(format:"%d/%d", index.row + 1, self.getNumberOfItemInSection(section: 0))
+        }
+    }
     
     
 }
