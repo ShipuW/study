@@ -49,6 +49,14 @@ class QuestionsViewController: UIViewController, UITableViewDelegate, UITableVie
         self.updateTitle()
     }
     
+    func updateTitle(){
+        if let index = self.tableView.indexPathsForVisibleRows?.first {
+            self.title = String(format:"%d/%d", index.row + 1, self.getNumberOfItemInSection(section: 0))
+        } else {
+            self.title = currentCategory
+        }
+    }
+    
     func scrollToTop () {
         let desiredOffset = CGPoint(x: 0, y: -self.tableView.contentInset.top)
         self.tableView.setContentOffset(desiredOffset, animated: true)
@@ -164,12 +172,6 @@ class QuestionsViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         self.updateTitle()
-    }
-    
-    func updateTitle(){
-        if let index = self.tableView.indexPathsForVisibleRows?.first {
-            self.title = String(format:"%d/%d", index.row + 1, self.getNumberOfItemInSection(section: 0))
-        }
     }
     
     
