@@ -17,6 +17,7 @@ class QuestionCell: UITableViewCell {
     weak var delegate: QuestionCellDelegate?
     
     var questionModel:Question?
+    var myCurrentAnswer:Int16?
     
     @IBOutlet weak var questionTextView: UITextView!
     
@@ -48,13 +49,13 @@ class QuestionCell: UITableViewCell {
         }
     }
     
-    func configureForQuestionStart(_ questionResult: Question){
+    func configureForQuestionStart(_ questionResult: Question, _ myAnswerDict:Dictionary<Int16, Int16>){
         
         self.questionModel = questionResult
         
         self.cleanColor()
-        
-//        self.showColor()
+        self.myCurrentAnswer = myAnswerDict[(questionModel?.id)!]
+        self.showColor()
 
         
         questionTextView.attributedText = StringConverter.convertStringToHTMLAttributedString(string: (self.questionModel?.question)!)
@@ -73,25 +74,27 @@ class QuestionCell: UITableViewCell {
     {
         self.cleanColor()
         
+        myCurrentAnswer = Int16(sender.view?.tag ?? 0)
+        
         if let realDelegate = self.delegate{
             realDelegate.selectedAnswer!(id: (self.questionModel?.id)!, myAnswer: Int16(sender.view?.tag ?? 0))
         }
-//        self.questionModel?.myAnswer = Int16(sender.view?.tag ?? 0)
-        
-        // Can't update here ! tableview is using data.
-//        ActivitiesManager.shared.updateMyAnswerForQuestion(id: (self.questionModel?.id)!, myAnswer: Int16(sender.view?.tag ?? 0))
         
         self.showColor()
 
     }
     
     func showColor() {
-        let tapIndex = Int((self.questionModel?.myAnswer)! - 1)
-        if tapIndex > 0 {
-            collectionOfTextViews![tapIndex].backgroundColor = UIColor.red
+        if let showingAnswer = myCurrentAnswer {
+            if showingAnswer > 0 {
+                collectionOfTextViews![Int(showingAnswer - 1)].backgroundColor = UIColor.red
+            }
+            
+            let ansIndex = Int((self.questionModel?.answer)! - 1)
+            collectionOfTextViews![ansIndex].backgroundColor = UIColor.green
         }
-        let ansIndex = Int((self.questionModel?.answer)! - 1)
-        collectionOfTextViews![ansIndex].backgroundColor = UIColor.green
+
+        
     }
     
     func cleanColor() {

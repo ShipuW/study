@@ -69,8 +69,6 @@ class QuestionsViewController: UIViewController, UITableViewDelegate, UITableVie
             request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [p1])
         }
         
-        request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [p1])
-        
         let delegate = UIApplication.shared.delegate as! AppDelegate
         let moc = delegate.persistentContainer.viewContext
         
@@ -119,7 +117,7 @@ class QuestionsViewController: UIViewController, UITableViewDelegate, UITableVie
         if isReviewMode {
             cell.configureForQuestionView(self.fetchedResultsController?.object(at: indexPath) as! Question)
         } else {
-            cell.configureForQuestionStart(self.fetchedResultsController?.object(at: indexPath) as! Question)
+            cell.configureForQuestionStart(self.fetchedResultsController?.object(at: indexPath) as! Question,myAnswersDict )
         }
         
         return cell
